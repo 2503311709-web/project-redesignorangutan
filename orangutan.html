@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orangutan Haven — Konservasi & Ecopark Sumatera Utara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #0B3D2E;
+  --forest-mid: #155C42;
+  --leaf: #1D9E75;
+  --leaf-light: #5DCAA5;
+  --leaf-pale: #C8EFE0;
+  --amber: #E8A020;
+  --amber-light: #FBC84A;
+  --cream: #F6F1E8;
+  --cream-dark: #EDE5D4;
+  --bark: #6B4A2A;
+  --text-dark: #1A1208;
+  --text-mid: #3D3020;
+  --text-muted: #7A6A55;
+  --white: #FFFFFF;
+
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ─── NAVBAR ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+  background: rgba(11, 61, 46, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(93, 202, 165, 0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--leaf);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.nav-logo-text {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(246, 241, 232, 0.75);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--leaf-light); }
+
+.nav-cta {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-nav-outline {
+  padding: 8px 18px;
+  border: 1px solid rgba(93, 202, 165, 0.5);
+  border-radius: 100px;
+  color: var(--leaf-light);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-nav-outline:hover {
+  background: rgba(93, 202, 165, 0.1);
+  border-color: var(--leaf-light);
+}
+
+.btn-nav-primary {
+  padding: 8px 20px;
+  background: var(--amber);
+  border-radius: 100px;
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-nav-primary:hover {
+  background: var(--amber-light);
+  transform: translateY(-1px);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--forest);
+  display: grid;
+  grid-template-rows: 1fr;
+  position: relative;
+  overflow: hidden;
+  padding-top: 68px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 75% 50%, rgba(29, 158, 117, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 80% at 20% 80%, rgba(11, 61, 46, 0.8) 0%, transparent 60%);
+}
+
+.hero-leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.leaf-shape {
+  position: absolute;
+  border-radius: 50% 0;
+  opacity: 0.06;
+  background: var(--leaf-light);
+  animation: floatLeaf 8s ease-in-out infinite;
+}
+
+.leaf-shape:nth-child(1) { width: 300px; height: 300px; top: -80px; right: 10%; animation-delay: 0s; }
+.leaf-shape:nth-child(2) { width: 200px; height: 200px; top: 30%; right: 2%; animation-delay: 2s; border-radius: 0 50%; opacity: 0.04; }
+.leaf-shape:nth-child(3) { width: 150px; height: 150px; bottom: 20%; left: 5%; animation-delay: 4s; opacity: 0.05; }
+
+@keyframes floatLeaf {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(93, 202, 165, 0.12);
+  border: 1px solid rgba(93, 202, 165, 0.3);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--leaf-light);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--leaf-light);
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: rgba(246, 241, 232, 0.7);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 480px;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--amber);
+  border-radius: 100px;
+  color: var(--forest);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-out);
+  box-shadow: 0 4px 20px rgba(232, 160, 32, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--amber-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(232, 160, 32, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--leaf-light);
+  color: var(--leaf-light);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {}
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--leaf-light);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(246, 241, 232, 0.5);
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-card-main {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.hero-card-label {
+  font-size: 11px;
+  color: var(--leaf-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.booking-form {}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  color: rgba(246, 241, 232, 0.6);
+  margin-bottom: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-select, .form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: var(--cream);
+  font-size: 14px;
+  font-family: var(--sans);
+  outline: none;
+  transition: border-color 0.2s;
+  cursor: pointer;
+  appearance: none;
+}
+
+.form-select:focus, .form-input:focus {
+  border-color: var(--leaf-light);
+}
+
+.form-select option { background: var(--forest); }
+
+.ticket-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ticket-type {
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.ticket-type.active {
+  border-color: var(--leaf-light);
+  background: rgba(93, 202, 165, 0.15);
+}
+
+.ticket-type-name {
+  font-size: 13px;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.ticket-type-price {
+  font-size: 11px;
+  color: var(--leaf-light);
+  margin-top: 2px;
+}
+
+.btn-book {
+  width: 100%;
+  padding: 14px;
+  background: var(--amber);
+  border: none;
+  border-radius: 12px;
+  color: var(--forest);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-book:hover {
+  background: var(--amber-light);
+}
+
+.hero-card-float {
+  position: absolute;
+  bottom: -20px;
+  right: -40px;
+  background: var(--forest-mid);
+  border: 1px solid rgba(93, 202, 165, 0.2);
+  border-radius: 16px;
+  padding: 14px 18px;
+  min-width: 160px;
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-label { font-size: 11px; color: rgba(246,241,232,0.5); }
+.float-val { font-size: 18px; font-weight: 700; color: var(--amber-light); margin-top: 2px; }
+.float-sub { font-size: 11px; color: rgba(246,241,232,0.5); }
+
+
+/* ─── SECTION COMMONS ─── */
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─── FEATURES STRIP ─── */
+.features-strip {
+  background: var(--forest);
+  padding: 24px 0;
+}
+
+.features-strip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.strip-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(93, 202, 165, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.strip-text {}
+.strip-name { font-size: 13px; font-weight: 500; color: var(--cream); }
+.strip-sub { font-size: 12px; color: rgba(246,241,232,0.5); margin-top: 1px; }
+
+/* ─── ABOUT ─── */
+.about {
+  padding: 120px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-img-main {
+  width: 100%;
+  height: 480px;
+  background: var(--forest);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-img-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--forest-mid), var(--forest));
+}
+
+.orangutan-illustration {
+  font-size: 120px;
+  opacity: 0.9;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.about-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--amber);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.about-card-float {
+  position: absolute;
+  bottom: -24px;
+  right: -32px;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 40px rgba(11,61,46,0.15);
+  border: 1px solid var(--cream-dark);
+}
+
+.float-big { font-family: var(--serif); font-size: 36px; font-weight: 900; color: var(--forest); }
+.float-text { font-size: 13px; color: var(--text-muted); margin-top: 4px; max-width: 120px; line-height: 1.4; }
+
+.about-text {}
+
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.value-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--cream-dark);
+  transition: all 0.3s;
+}
+
+.value-item:hover {
+  border-color: var(--leaf-pale);
+  box-shadow: 0 4px 20px rgba(11,61,46,0.06);
+  transform: translateX(4px);
+}
+
+.value-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--leaf-pale);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.value-name { font-size: 15px; font-weight: 500; color: var(--forest); }
+.value-desc { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+
+/* ─── TICKETS ─── */
+.tickets-section {
+  background: var(--forest);
+  padding: 100px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tickets-bg-circle {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: rgba(29, 158, 117, 0.08);
+  top: -200px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.tickets-section .section-title { color: var(--white); }
+.tickets-section .section-desc { color: rgba(246,241,232,0.6); }
+.tickets-section .section-badge { color: var(--amber-light); }
+
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ticket-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--leaf);
+  border-radius: 3px 3px 0 0;
+}
+
+.ticket-card.featured {
+  border-color: var(--leaf);
+  background: rgba(29, 158, 117, 0.12);
+}
+
+.ticket-card.featured::before { background: var(--amber); }
+
+.ticket-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(93, 202, 165, 0.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.ticket-badge {
+  display: inline-block;
+  background: var(--amber);
+  color: var(--forest);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.ticket-icon { font-size: 36px; margin-bottom: 16px; }
+.ticket-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.ticket-target { font-size: 13px; color: rgba(246,241,232,0.5); margin-bottom: 24px; }
+
+.ticket-price {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--amber-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.ticket-per { font-size: 13px; color: rgba(246,241,232,0.5); margin-bottom: 28px; }
+
+.ticket-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.ticket-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(246,241,232,0.75);
+}
+
+.tick {
+  width: 18px;
+  height: 18px;
+  background: rgba(93,202,165,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  color: var(--leaf-light);
+}
+
+.btn-ticket {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.btn-ticket-outline {
+  background: transparent;
+  border: 1px solid rgba(93,202,165,0.4);
+  color: var(--leaf-light);
+}
+
+.btn-ticket-outline:hover { background: rgba(93,202,165,0.1); }
+
+.btn-ticket-filled {
+  background: var(--amber);
+  border: none;
+  color: var(--forest);
+}
+
+.btn-ticket-filled:hover { background: var(--amber-light); }
+
+.sessions-note {
+  text-align: center;
+  margin-top: 32px;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.session-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 13px;
+  color: rgba(246,241,232,0.7);
+}
+
+
+/* ─── ORANGUTANS SECTION ─── */
+.orang-section {
+  padding: 100px 48px;
+  background: var(--cream);
+}
+
+.orang-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.orang-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--cream-dark);
+  transition: all 0.3s;
+}
+
+.orang-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(11,61,46,0.1);
+}
+
+.orang-img {
+  height: 160px;
+  background: linear-gradient(135deg, var(--forest-mid), var(--forest));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  position: relative;
+}
+
+.orang-status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 3px 8px;
+  background: var(--leaf-pale);
+  border-radius: 100px;
+  font-size: 10px;
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.orang-info { padding: 18px; }
+.orang-name { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--forest); }
+.orang-age { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.orang-story { font-size: 13px; color: var(--text-mid); margin-top: 10px; line-height: 1.5; }
+
+
+/* ─── DONATE ─── */
+.donate-section {
+  padding: 100px 48px;
+  background: var(--forest-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-bg {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(11,61,46,0.5);
+  pointer-events: none;
+}
+
+.donate-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.donate-section .section-header { text-align: left; margin: 0 0 32px; }
+.donate-section .section-title { color: var(--white); }
+.donate-section .section-desc { color: rgba(246,241,232,0.6); }
+.donate-section .section-badge { color: var(--amber-light); }
+
+.impact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.impact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: rgba(246,241,232,0.8);
+}
+
+.impact-amount {
+  background: var(--amber);
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.donate-form-card {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 40px;
+}
+
+.donate-form-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+
+.donate-form-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.amount-presets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.amount-btn {
+  padding: 12px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.amount-btn:hover, .amount-btn.active {
+  border-color: var(--leaf);
+  background: var(--leaf-pale);
+  color: var(--forest);
+}
+
+.custom-amount {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.custom-prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 12px 14px 12px 50px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--forest);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.custom-input:focus { border-color: var(--leaf); }
+
+.payment-methods {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.pay-method {
+  padding: 8px 14px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--cream);
+  color: var(--text-mid);
+}
+
+.pay-method.active, .pay-method:hover {
+  border-color: var(--leaf);
+  background: var(--leaf-pale);
+  color: var(--forest);
+}
+
+.btn-donate {
+  width: 100%;
+  padding: 15px;
+  background: var(--forest);
+  border: none;
+  border-radius: 14px;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-donate:hover { background: var(--forest-mid); }
+
+.secure-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+
+/* ─── HOW TO GET THERE ─── */
+.location-section {
+  padding: 100px 48px;
+  background: var(--cream-dark);
+}
+
+.location-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.route-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.route-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid var(--cream-dark);
+  transition: all 0.25s;
+}
+
+.route-card:hover {
+  border-color: var(--leaf-pale);
+  box-shadow: 0 4px 20px rgba(11,61,46,0.07);
+}
+
+.route-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--leaf-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.route-name { font-size: 15px; font-weight: 500; color: var(--forest); }
+.route-desc { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+.route-price { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; color: var(--leaf); background: var(--leaf-pale); padding: 2px 8px; border-radius: 100px; }
+
+.location-info-card {
+  background: var(--forest);
+  border-radius: 24px;
+  padding: 36px;
+  color: var(--cream);
+}
+
+.location-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.info-row:last-child { border-bottom: none; }
+
+.info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.info-key { font-size: 12px; color: rgba(246,241,232,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+.info-val { font-size: 14px; color: var(--cream); margin-top: 2px; font-weight: 400; }
+
+.map-placeholder {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(246,241,232,0.4);
+  gap: 8px;
+}
+
+
+/* ─── NEWS ─── */
+.news-section {
+  padding: 100px 48px;
+  background: var(--white);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.news-card {
+  border: 1px solid var(--cream-dark);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11,61,46,0.08);
+}
+
+.news-img {
+  height: 180px;
+  background: linear-gradient(135deg, var(--forest), var(--forest-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.news-body { padding: 20px; }
+.news-tag { font-size: 11px; font-weight: 600; color: var(--leaf); text-transform: uppercase; letter-spacing: 0.05em; }
+.news-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--forest); margin-top: 6px; line-height: 1.3; }
+.news-date { font-size: 12px; color: var(--text-muted); margin-top: 10px; }
+.news-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--leaf); margin-top: 14px; text-decoration: none; font-weight: 500; }
+.news-link:hover { color: var(--forest); }
+
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--text-dark);
+  padding: 64px 48px 32px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 32px;
+}
+
+.footer-brand {}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--leaf);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.footer-logo-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--cream);
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: rgba(246,241,232,0.45);
+  line-height: 1.7;
+  max-width: 240px;
+  margin-bottom: 24px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.social-btn:hover { background: rgba(255,255,255,0.12); }
+
+.footer-col-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: rgba(246,241,232,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--leaf-light); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: rgba(246,241,232,0.3);
+}
+
+.footer-partners {
+  font-size: 13px;
+  color: rgba(246,241,232,0.3);
+}
+
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+
+  .hero-content { grid-template-columns: 1fr; gap: 40px; padding: 40px 20px; }
+  .hero-card-float { display: none; }
+
+  .about { padding: 60px 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-card-float { display: none; }
+
+  .tickets-section { padding: 60px 20px; }
+  .tickets-grid { grid-template-columns: 1fr; }
+
+  .orang-section { padding: 60px 20px; }
+
+  .donate-section { padding: 60px 20px; }
+  .donate-inner { grid-template-columns: 1fr; gap: 40px; }
+
+  .location-section { padding: 60px 20px; }
+  .location-grid { grid-template-columns: 1fr; }
+
+  .news-section { padding: 60px 20px; }
+  .news-grid { grid-template-columns: 1fr; }
+
+  footer { padding: 40px 20px 24px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🦧</div>
+    <span class="nav-logo-text">Orangutan Haven</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#tickets">Kunjungi</a></li>
+    <li><a href="#orangutans">Orangutan</a></li>
+    <li><a href="#donate">Dukung</a></li>
+    <li><a href="#news">Berita</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#donate" class="btn-nav-outline">💚 Donasi</a>
+    <a href="#tickets" class="btn-nav-primary">🎟️ Pesan Tiket</a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-leaves">
+    <div class="leaf-shape"></div>
+    <div class="leaf-shape"></div>
+    <div class="leaf-shape"></div>
+  </div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">🌿 Ecopark Konservasi · Sumatera Utara</div>
+      <h1 class="hero-title">Temui Orangutan<br>Sumatera dari <em>Dekat</em></h1>
+      <p class="hero-desc">Wisata edukasi konservasi yang unik — saksikan orangutan Sumatera yang kritis terancam punah, hanya 40–50 menit dari Medan.</p>
+      <div class="hero-actions">
+        <a href="#tickets" class="btn-primary">🎟️ Pesan Tiket Sekarang</a>
+        <a href="#about" class="btn-secondary">Pelajari Lebih Lanjut</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Individu Orangutan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Tahun Konservasi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Sesi per Hari</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <div class="hero-card-label">Pesan Kunjungan</div>
+        <div class="booking-form">
+          <div class="form-group">
+            <label class="form-label">Tipe Tiket</label>
+            <div class="ticket-types">
+              <div class="ticket-type active" onclick="selectTicket(this)">
+                <div class="ticket-type-name">👨‍👩‍👧 Umum</div>
+                <div class="ticket-type-price">Lihat harga ↓</div>
+              </div>
+              <div class="ticket-type" onclick="selectTicket(this)">
+                <div class="ticket-type-name">🎓 Pelajar</div>
+                <div class="ticket-type-price">Diskon khusus</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Kunjungan</label>
+            <input type="date" class="form-input" style="color-scheme: dark;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pilih Sesi</label>
+            <select class="form-select">
+              <option>🌅 Pagi — 10.00 s/d 12.00 WIB</option>
+              <option>🌇 Sore — 14.00 s/d 16.00 WIB</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Jumlah Pengunjung</label>
+            <select class="form-select">
+              <option>1 orang</option>
+              <option>2 orang</option>
+              <option>3 orang</option>
+              <option>4 orang</option>
+              <option>5+ orang (grup)</option>
+            </select>
+          </div>
+          <button class="btn-book" onclick="alert('Terima kasih! Tim kami akan menghubungi Anda untuk konfirmasi booking.')">🎟️ Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="hero-card-float">
+        <div class="float-label">Status hari ini</div>
+        <div class="float-val">Buka ✓</div>
+        <div class="float-sub">Sesi tersedia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FEATURE STRIP -->
+<div class="features-strip">
+  <div class="features-strip-inner">
+    <div class="strip-item">
+      <div class="strip-icon">♻️</div>
+      <div class="strip-text">
+        <div class="strip-name">100% Ramah Lingkungan</div>
+        <div class="strip-sub">Energi surya & air hujan</div>
+      </div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🛡️</div>
+      <div class="strip-sub">Terakreditasi SOCP & YEL</div>
+      <div class="strip-text">
+        <div class="strip-name">Lembaga Terpercaya</div>
+      </div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">📚</div>
+      <div class="strip-text">
+        <div class="strip-name">Edukasi Interaktif</div>
+        <div class="strip-sub">Panduan terlatih</div>
+      </div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🧒</div>
+      <div class="strip-text">
+        <div class="strip-name">Cocok Semua Usia</div>
+        <div class="strip-sub">Akses difabel tersedia</div>
+      </div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">📍</div>
+      <div class="strip-text">
+        <div class="strip-name">40–50 Menit dari Medan</div>
+        <div class="strip-sub">Pancur Batu, Sumut</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-img-main">
+        <div class="about-img-bg">
+          <div class="orangutan-illustration">🦧</div>
+        </div>
+        <div class="about-tag">🌿 Sejak 2000</div>
+      </div>
+      <div class="about-card-float">
+        <div class="float-big">430+</div>
+        <div class="float-text">Orangutan diselamatkan oleh SOCP</div>
+      </div>
+    </div>
+
+    <div class="about-text reveal reveal-delay-1">
+      <div class="section-badge">Tentang Kami</div>
+      <h2 class="section-title">Rumah Aman bagi Orangutan yang Tak Bisa Kembali ke Hutan</h2>
+      <p class="section-desc">Orangutan Haven adalah proyek Yayasan Ekosistem Lestari (YEL) — NGO nirlaba yang selama 20+ tahun berdedikasi melindungi orangutan dan ekosistem Sumatera. Orangutan yang tinggal di sini memiliki kondisi fisik yang mencegah mereka kembali ke alam liar, dan mendapat perawatan seumur hidup.</p>
+
+      <div class="values-list">
+        <div class="value-item reveal reveal-delay-2">
+          <div class="value-icon">🤝</div>
+          <div>
+            <div class="value-name">Komitmen Konservasi</div>
+            <div class="value-desc">Kami melindungi dan merawat alam, satwa liar, lingkungan, dan manusia di sekitarnya.</div>
+          </div>
+        </div>
+        <div class="value-item reveal reveal-delay-3">
+          <div class="value-icon">♻️</div>
+          <div>
+            <div class="value-name">Keberlanjutan</div>
+            <div class="value-desc">Energi surya, bahan daur ulang, pengurangan konsumsi air — semua terintegrasi dalam operasional kami.</div>
+          </div>
+        </div>
+        <div class="value-item reveal reveal-delay-4">
+          <div class="value-icon">📚</div>
+          <div>
+            <div class="value-name">Edukasi Generasi Muda</div>
+            <div class="value-desc">Program edukasi khusus untuk sekolah agar generasi berikutnya peduli terhadap konservasi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TICKETS -->
+<section class="tickets-section" id="tickets">
+  <div class="tickets-bg-circle"></div>
+  <div class="section-header reveal">
+    <div class="section-badge">Kunjungi Kami</div>
+    <h2 class="section-title">Pilih Tipe Kunjungan</h2>
+    <p class="section-desc">Tersedia 2 sesi setiap hari. Reservasi dimulai dari sini — pastikan pilih sesi yang sesuai.</p>
+  </div>
+
+  <div class="tickets-grid" style="max-width:1100px; margin: 0 auto;">
+    <div class="ticket-card reveal">
+      <div class="ticket-icon">👨‍👩‍👧‍👦</div>
+      <div class="ticket-name">Umum</div>
+      <div class="ticket-target">Keluarga & pengunjung individu</div>
+      <div class="ticket-price">Hubungi</div>
+      <div class="ticket-per">kami untuk info harga terkini</div>
+      <ul class="ticket-features">
+        <li><span class="tick">✓</span> Tur berpemandu ke island orangutan</li>
+        <li><span class="tick">✓</span> Materi edukasi konservasi</li>
+        <li><span class="tick">✓</span> Akses eco-farming centre</li>
+        <li><span class="tick">✓</span> Jalur aksesibel untuk disabilitas</li>
+        <li><span class="tick">✓</span> Fasilitas toilet & baby changing</li>
+      </ul>
+      <a href="mailto:comms@orangutanhaven.com" class="btn-ticket btn-ticket-outline">Tanya Info Tiket</a>
+    </div>
+
+    <div class="ticket-card featured reveal reveal-delay-1">
+      <div class="ticket-badge">⭐ Populer</div>
+      <div class="ticket-icon">🎓</div>
+      <div class="ticket-name">Edukasi</div>
+      <div class="ticket-target">Grup sekolah & mahasiswa</div>
+      <div class="ticket-price">Spesial</div>
+      <div class="ticket-per">Harga grup — min. 10 orang</div>
+      <ul class="ticket-features">
+        <li><span class="tick">✓</span> Semua manfaat paket Umum</li>
+        <li><span class="tick">✓</span> Aktivitas hands-on konservasi</li>
+        <li><span class="tick">✓</span> Modul pembelajaran khusus</li>
+        <li><span class="tick">✓</span> Sertifikat edukasi untuk siswa</li>
+        <li><span class="tick">✓</span> Panduan khusus bilingual (ID/EN)</li>
+      </ul>
+      <a href="mailto:comms@orangutanhaven.com" class="btn-ticket btn-ticket-filled">Reservasi Grup</a>
+    </div>
+
+    <div class="ticket-card reveal reveal-delay-2">
+      <div class="ticket-icon">🤝</div>
+      <div class="ticket-name">Relawan</div>
+      <div class="ticket-target">Untuk yang ingin berkontribusi</div>
+      <div class="ticket-price">Gratis</div>
+      <div class="ticket-per">Pendaftaran online diperlukan</div>
+      <ul class="ticket-features">
+        <li><span class="tick">✓</span> Berkontribusi langsung ke konservasi</li>
+        <li><span class="tick">✓</span> Belajar dari para ahli</li>
+        <li><span class="tick">✓</span> Sertifikat relawan resmi</li>
+        <li><span class="tick">✓</span> Fleksibel dari 1 hari hingga 1 bulan</li>
+        <li><span class="tick">✓</span> Komunitas conservationist global</li>
+      </ul>
+      <a href="mailto:comms@orangutanhaven.com" class="btn-ticket btn-ticket-outline">Daftar Relawan</a>
+    </div>
+  </div>
+
+  <div class="sessions-note reveal">
+    <div class="session-pill">🌅 Sesi Pagi: 10.00 – 12.00 WIB</div>
+    <div class="session-pill">🌇 Sesi Sore: 14.00 – 16.00 WIB</div>
+    <div class="session-pill">📅 Buka Setiap Hari (Senin – Minggu)</div>
+  </div>
+</section>
+
+
+<!-- ORANGUTANS -->
+<section class="orang-section" id="orangutans">
+  <div class="section-header reveal">
+    <div class="section-badge">Kenali Mereka</div>
+    <h2 class="section-title">Para Penghuni Orangutan Haven</h2>
+    <p class="section-desc">Setiap orangutan yang tinggal di sini punya cerita unik — mereka diselamatkan dari perdagangan ilegal dan situasi berbahaya.</p>
+  </div>
+
+  <div class="orang-grid">
+    <div class="orang-card reveal">
+      <div class="orang-img">
+        🦧
+        <div class="orang-status">Sehat</div>
+      </div>
+      <div class="orang-info">
+        <div class="orang-name">Krismon</div>
+        <div class="orang-age">Jantan · ~17 tahun</div>
+        <div class="orang-story">Penghuni pertama Orangutan Haven. Diselamatkan dari penangkaran dan kini hidup tenang di pulau buatan.</div>
+      </div>
+    </div>
+
+    <div class="orang-card reveal reveal-delay-1">
+      <div class="orang-img" style="background: linear-gradient(135deg, #2A4A1A, #1D6B2A);">
+        🦧
+        <div class="orang-status">Sehat</div>
+      </div>
+      <div class="orang-info">
+        <div class="orang-name">Sari</div>
+        <div class="orang-age">Betina · ~12 tahun</div>
+        <div class="orang-story">Diselamatkan dari perdagangan hewan ilegal saat masih bayi. Kini menjadi figur utama di antara penghuni haven.</div>
+      </div>
+    </div>
+
+    <div class="orang-card reveal reveal-delay-2">
+      <div class="orang-img" style="background: linear-gradient(135deg, #3D2A0A, #6B4A1A);">
+        🦧
+        <div class="orang-status">Dalam Perawatan</div>
+      </div>
+      <div class="orang-info">
+        <div class="orang-name">Raja</div>
+        <div class="orang-age">Jantan · ~9 tahun</div>
+        <div class="orang-story">Memiliki keterbatasan penglihatan akibat injury, Raja mendapat perawatan khusus dari tim dokter hewan berpengalaman.</div>
+      </div>
+    </div>
+
+    <div class="orang-card reveal reveal-delay-3">
+      <div class="orang-img" style="background: linear-gradient(135deg, #1A3D2A, #0B5C3A);">
+        🦧
+        <div class="orang-status">Sehat</div>
+      </div>
+      <div class="orang-info">
+        <div class="orang-name">Melati</div>
+        <div class="orang-age">Betina · ~14 tahun</div>
+        <div class="orang-story">Pemimpin kelompok yang cerdas. Melati sering menunjukkan perilaku sosial yang menarik bagi para peneliti.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--text-muted);">
+    🦧 Dan 2 individu lainnya — temui mereka langsung saat berkunjung!
+  </div>
+</section>
+
+
+<!-- DONATE -->
+<section class="donate-section" id="donate">
+  <div class="donate-bg"></div>
+  <div class="donate-inner">
+    <div>
+      <div class="section-header reveal">
+        <div class="section-badge">💚 Dukung Konservasi</div>
+        <h2 class="section-title">Setiap Donasi Berarti Nyata</h2>
+        <p class="section-desc">Dana donasi digunakan langsung untuk perawatan orangutan, biaya operasional, dan program edukasi komunitas.</p>
+      </div>
+      <div class="impact-list reveal">
+        <div class="impact-item">
+          <span class="impact-amount">Rp 50.000</span>
+          <span>Membiayai 1 hari makan untuk 1 orangutan</span>
+        </div>
+        <div class="impact-item">
+          <span class="impact-amount">Rp 100.000</span>
+          <span>Mendukung perawatan medis rutin bulanan</span>
+        </div>
+        <div class="impact-item">
+          <span class="impact-amount">Rp 250.000</span>
+          <span>Membiayai program edukasi 1 kelompok siswa</span>
+        </div>
+        <div class="impact-item">
+          <span class="impact-amount">Rp 500.000</span>
+          <span>Mendukung riset perilaku orangutan selama seminggu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="donate-form-card reveal reveal-delay-2">
+      <div class="donate-form-title">Donasikan Sekarang</div>
+      <div class="donate-form-sub">Aman & transparan — 100% langsung ke konservasi</div>
+
+      <div class="amount-presets">
+        <button class="amount-btn" onclick="setAmount(this, '50000')">Rp 50.000</button>
+        <button class="amount-btn active" onclick="setAmount(this, '100000')">Rp 100.000</button>
+        <button class="amount-btn" onclick="setAmount(this, '250000')">Rp 250.000</button>
+        <button class="amount-btn" onclick="setAmount(this, '500000')">Rp 500.000</button>
+      </div>
+
+      <div class="custom-amount">
+        <span class="custom-prefix">Rp</span>
+        <input type="number" class="custom-input" id="customAmount" placeholder="Nominal lain..." value="100000">
+      </div>
+
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">Metode Pembayaran</div>
+      <div class="payment-methods">
+        <div class="pay-method active" onclick="selectPay(this)">📱 QRIS</div>
+        <div class="pay-method" onclick="selectPay(this)">💚 GoPay</div>
+        <div class="pay-method" onclick="selectPay(this)">🏦 Transfer Bank</div>
+        <div class="pay-method" onclick="selectPay(this)">💳 Kartu Kredit</div>
+      </div>
+
+      <button class="btn-donate" onclick="alert('Terima kasih atas niat baik Anda! 🦧\n\nAnda akan diarahkan ke halaman pembayaran.\n\nDonasi Anda sangat berarti untuk konservasi orangutan Sumatera.')">
+        💚 Donasi Sekarang
+      </button>
+      <div class="secure-note">🔒 Pembayaran aman & terenkripsi · Bukti donasi via email</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- LOCATION -->
+<section class="location-section" id="contact">
+  <div class="location-inner">
+    <div class="section-header reveal" style="text-align: left; margin-bottom: 48px;">
+      <div class="section-badge">Cara Menuju Lokasi</div>
+      <h2 class="section-title">Mudah Dijangkau dari Medan</h2>
+      <p class="section-desc">Hanya 40–50 menit perjalanan dari pusat kota Medan. Tersedia transportasi umum yang terjangkau.</p>
+    </div>
+
+    <div class="location-grid">
+      <div class="route-cards reveal">
+        <div class="route-card">
+          <div class="route-icon">📱</div>
+          <div>
+            <div class="route-name">Grab / Gojek</div>
+            <div class="route-desc">Pesan ojek online langsung ke lokasi. Paling nyaman untuk rombongan kecil. Supir biasanya sudah familiar dengan lokasi.</div>
+            <span class="route-price">~Rp 40–60 ribu dari pusat Medan</span>
+          </div>
+        </div>
+        <div class="route-card">
+          <div class="route-icon">🚌</div>
+          <div>
+            <div class="route-name">Bus Murni (¾ Bus)</div>
+            <div class="route-desc">Dari Terminal Lau Chi, naik bus Murni menuju Pancur Batu. Pilihan paling hemat untuk pengunjung individu.</div>
+            <span class="route-price">Rp 15.000 / orang</span>
+          </div>
+        </div>
+        <div class="route-card">
+          <div class="route-icon">🚐</div>
+          <div>
+            <div class="route-name">Almasar (HiAce)</div>
+            <div class="route-desc">Dari Terminal Lau Chi, naik HiAce Almasar. Lebih cepat dari bus biasa dan nyaman untuk keluarga.</div>
+            <span class="route-price">Rp 20.000 / orang</span>
+          </div>
+        </div>
+        <div class="route-card">
+          <div class="route-icon">🚗</div>
+          <div>
+            <div class="route-name">Kendaraan Pribadi</div>
+            <div class="route-desc">Ikuti rute Jl. Jamin Ginting menuju KM 28.5. Tersedia area parkir yang luas di lokasi.</div>
+            <span class="route-price">Parkir tersedia gratis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="location-info-card reveal reveal-delay-2">
+        <div class="location-title">📍 Informasi Lokasi</div>
+        <div class="info-row">
+          <div class="info-icon">🏠</div>
+          <div>
+            <div class="info-key">Alamat</div>
+            <div class="info-val">Jl. Jamin Ginting KM 28.5, Desa Bintang Meriah, Pancur Batu, Sumatera Utara</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🕙</div>
+          <div>
+            <div class="info-key">Jam Operasional</div>
+            <div class="info-val">Senin – Minggu<br>Sesi Pagi: 10.00 – 12.00 WIB<br>Sesi Sore: 14.00 – 16.00 WIB</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-key">Email</div>
+            <div class="info-val">comms@orangutanhaven.com</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🎒</div>
+          <div>
+            <div class="info-key">Bawa Apa?</div>
+            <div class="info-val">Sepatu tertutup, sunscreen, obat nyamuk, botol air minum, & semangat petualang!</div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          🗺️ Klik untuk buka Google Maps
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEWS -->
+<section class="news-section" id="news">
+  <div class="section-header reveal">
+    <div class="section-badge">Berita Terbaru</div>
+    <h2 class="section-title">Kabar dari Orangutan Haven</h2>
+    <p class="section-desc">Update terkini tentang orangutan, program konservasi, dan kegiatan di Haven.</p>
+  </div>
+
+  <div class="news-grid">
+    <div class="news-card reveal">
+      <div class="news-img">🌿</div>
+      <div class="news-body">
+        <div class="news-tag">Konservasi</div>
+        <div class="news-title">Krismon, Penghuni Pertama Orangutan Haven, Kini Sehat dan Aktif</div>
+        <div class="news-date">Maret 2025</div>
+        <a href="#" class="news-link">Baca selengkapnya →</a>
+      </div>
+    </div>
+    <div class="news-card reveal reveal-delay-1">
+      <div class="news-img">📚</div>
+      <div class="news-body">
+        <div class="news-tag">Edukasi</div>
+        <div class="news-title">Program Field Trip untuk 200 Siswa SD dari Medan Sukses Digelar</div>
+        <div class="news-date">Februari 2025</div>
+        <a href="#" class="news-link">Baca selengkapnya →</a>
+      </div>
+    </div>
+    <div class="news-card reveal reveal-delay-2">
+      <div class="news-img">🌱</div>
+      <div class="news-body">
+        <div class="news-tag">Keberlanjutan</div>
+        <div class="news-title">Panel Surya Baru Terpasang, Orangutan Haven Kini 80% Energi Mandiri</div>
+        <div class="news-date">Januari 2025</div>
+        <a href="#" class="news-link">Baca selengkapnya →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">🦧</div>
+          <span class="footer-logo-name">Orangutan Haven</span>
+        </div>
+        <p class="footer-tagline">Ecopark konservasi orangutan Sumatera — tempat di mana alam, pendidikan, dan kepedulian bertemu.</p>
+        <div class="social-links">
+          <div class="social-btn">📸</div>
+          <div class="social-btn">🐦</div>
+          <div class="social-btn">▶️</div>
+          <div class="social-btn">👥</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Kunjungi</div>
+        <ul class="footer-links">
+          <li><a href="#tickets">Harga Tiket</a></li>
+          <li><a href="#tickets">Jadwal Sesi</a></li>
+          <li><a href="#tickets">Paket Edukasi</a></li>
+          <li><a href="#tickets">Relawan</a></li>
+          <li><a href="#contact">Cara ke Lokasi</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Tentang</div>
+        <ul class="footer-links">
+          <li><a href="#about">Siapa Kami</a></li>
+          <li><a href="#orangutans">Para Orangutan</a></li>
+          <li><a href="#about">Misi & Visi</a></li>
+          <li><a href="#news">Berita</a></li>
+          <li><a href="#">Tim & Partner</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Kontak</div>
+        <ul class="footer-links">
+          <li><a href="mailto:comms@orangutanhaven.com">Email Kami</a></li>
+          <li><a href="#donate">Donasi</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Media Kit</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+        </ul>
+        <div style="margin-top: 20px; font-size: 13px; color: rgba(246,241,232,0.4); line-height: 1.6;">
+          comms@orangutanhaven.com<br>
+          Pancur Batu, Sumatera Utara
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Orangutan Haven · PT Orangutan Haven · Semua hak dilindungi</div>
+      <div class="footer-partners">Didukung oleh: YEL · PanEco Foundation · SOCP</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+function selectTicket(el) {
+  document.querySelectorAll('.ticket-type').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setAmount(el, val) {
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('customAmount').value = val;
+}
+
+function selectPay(el) {
+  document.querySelectorAll('.pay-method').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
